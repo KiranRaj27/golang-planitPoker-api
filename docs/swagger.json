@@ -1,0 +1,57 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/cards": {
+            "get": {
+                "description": "Fetch all cards with their values and set types",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Cards"
+                ],
+                "summary": "Get all cards",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/github_com_kiranraj27_sprint-planner_internal_domain.Card"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "github_com_kiranraj27_sprint-planner_internal_domain.Card": {
+            "description": "Card entity containing value and set type.",
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "set_type": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

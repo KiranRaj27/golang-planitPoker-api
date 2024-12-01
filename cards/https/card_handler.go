@@ -17,6 +17,14 @@ func NewCardHandler(router *mux.Router, uc domain.CardUseCase) {
 	router.HandleFunc("/cards", handler.GetCards).Methods("GET")
 }
 
+// GetCards handles the GET request to fetch all cards.
+// @Summary Get all cards
+// @Description Fetch all cards with their values and set types
+// @Tags Cards
+// @Produce json
+// @Success 200 {array} domain.Card
+// @Failure 500 {object} map[string]string
+// @Router /cards [get]
 func (h *CardHandler) GetCards(w http.ResponseWriter, r *http.Request) {
 	cards, err := h.cardUseCase.GetCards()
 	if err != nil {
